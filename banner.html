@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banner</title>
+
+        <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .banner{
+            width: 100%;
+            height: 100vh;
+        }
+        .banner-strip{
+            display: flex;
+            height: 100%;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .strip{
+            position: relative;
+            width: 20%;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 0;
+           /*background: #a03131;*/
+            background: linear-gradient(to top, #a03131, transparent);
+            color: #fff;
+            transition: all ease 0.5s;
+        }
+        .strip p{
+            text-align: center;
+        }
+        .strip big{
+            text-transform: uppercase;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .strip small{
+            line-height: 24px;
+            padding: 0 15px;
+            font-size: 14px;
+            padding-top: 15px;
+            display: block;
+            font-style: italic;
+            opacity: 0;
+            visibility: hidden;
+            transition: all ease 0.5s;
+        }
+        .banner-img img{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            opacity: 0;
+            transition: all ease 0.5s;
+        }
+        .strip:hover{
+            height: 100%;
+            padding: 15px 0 90px;
+        }
+        .strip:hover small{
+            opacity: 1;
+            visibility: visible;
+        }
+        .strip:nth-child(2){
+            /*background-color: #31a096;*/
+            background: linear-gradient(to top, #31a096, transparent);
+        }
+        .strip:nth-child(3){
+            /*background-color: #b7a54b;*/
+            background: linear-gradient(to top, #b7a54b, transparent);
+        }
+        .strip:nth-child(4){
+            /*background-color: #7c4f80;*/
+            background: linear-gradient(to top, #7c4f80, transparent);
+        }
+        .strip:nth-child(5){
+            /*background-color: #735757;*/
+            background: linear-gradient(to top, #735757, transparent);
+        } 
+    </style>
+
+</head>
+<body>
+
+    <div class="banner">
+        <div class="banner-img">
+            <img src="images/room1.jpg" width="1200px" height="600px">
+        </div>
+
+        <div class="banner-strip">
+            <div class="strip" data-image="images/room1.jpg">
+                <p>
+                    <big>Living</big><br>
+                    <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, accusantium.</small>
+                </p>
+            </div>
+
+            <div class="strip" data-image="images/room2.jpg">
+                <p>
+                    <big>Kitchen</big><br>
+                    <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, accusantium.</small>
+                </p>
+            </div>
+
+            <div class="strip" data-image="images/room3.jpg">
+                <p>
+                    <big>Bedroom</big><br>
+                    <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, accusantium.</small>
+                </p>
+            </div>
+
+            <div class="strip" data-image="images/room4.jpg">
+                <p>
+                    <big>Study</big><br>
+                    <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, accusantium.</small>
+                </p>
+            </div>
+
+            <div class="strip" data-image="images/room5.jpg">
+                <p>
+                    <big>Bar</big><br>
+                    <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, accusantium.</small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+<!---JQUERY CDN LINK------------==-->
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(function() {
+        var image = $(".banner-img").find("img").attr("src");
+        $(".banner-img img").css("opacity","1");
+
+        $(".strip").mouseover(function(){
+            var currentImage = $(this).attr("data-image");
+            $(this).parent().parent().find(".banner-img img").attr("src",currentImage);
+            $(".banner-img img").css("opacity","1");
+        });
+        $(".strip").mouseout(function(){
+            $(".banner-img img").css("opacity",".8");
+            $(".banner-img img").attr("src", image); //SET DEFAULT IMAGE WHEN MOUSE OUT
+        })
+    })
+</script>
+</body>
+</html>
